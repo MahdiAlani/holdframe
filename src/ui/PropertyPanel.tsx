@@ -18,6 +18,7 @@ import {
   type PropValue,
 } from '../store';
 import { updateLayer } from './actions';
+import { AnimatorSection } from './AnimatorSection';
 import { EasingEditor } from './EasingEditor';
 import { CheckField, ColourField, NumberField, Row, Section, SelectField, TextField } from './fields';
 
@@ -320,7 +321,12 @@ function LayerPanel({ layer }: { layer: Layer }) {
           {anim('transform.opacity', 'Opacity', { step: 0.05, min: 0, max: 1 })}
           {anim('transform.anchor', 'Anchor')}
         </Section>
-        {layer.kind === 'text' ? <TextSection layer={layer} /> : null}
+        {layer.kind === 'text' ? (
+          <>
+            <TextSection layer={layer} />
+            <AnimatorSection layer={layer} />
+          </>
+        ) : null}
         {layer.kind === 'shape' ? (
           <>
             <ShapeSection layer={layer} />

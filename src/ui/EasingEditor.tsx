@@ -25,9 +25,10 @@ const sy = (y: number): number => SIZE - PAD - ((y - Y_MIN) / (Y_MAX - Y_MIN)) *
 interface Props {
   easing: Easing;
   onChange(easing: Easing, gesture?: string): void;
+  label?: string;
 }
 
-export function EasingEditor({ easing, onChange }: Props) {
+export function EasingEditor({ easing, onChange, label = 'Easing to next key' }: Props) {
   const svg = useRef<SVGSVGElement>(null);
 
   const dragHandle = (e: PointerEvent, which: 1 | 2): void => {
@@ -52,7 +53,7 @@ export function EasingEditor({ easing, onChange }: Props) {
   return (
     <div className="easing" data-testid="easing-editor">
       <div className="easing-head">
-        <span>Easing to next key</span>
+        <span>{label}</span>
         <SelectField
           testId="easing-kind"
           value={easing.kind}

@@ -2,13 +2,14 @@ import type { Layer, Project, Time } from '../model/types';
 import { resolveNumber, resolveVec2 } from './animatable';
 import { transformMatrix } from './matrix';
 import type { DrawCommand, RenderTree } from './renderTree';
+import { animateText, approximateMeasure, type MeasureText } from './text';
 
 // A layer is live for inPoint <= t < outPoint.
 export function isLayerActive(layer: Layer, t: Time): boolean {
   return layer.visible && t >= layer.inPoint && t < layer.outPoint;
 }
 
-function evaluateLayer(layer: Layer, t: Time): DrawCommand {
+function evaluateLayer(layer: Layer, t: Time, measure: MeasureText): DrawCommand[] {
   const tr = layer.transform;
   const base = {
     layerId: layer.id,
@@ -23,7 +24,8 @@ function evaluateLayer(layer: Layer, t: Time): DrawCommand {
   };
   switch (layer.kind) {
     case 'text':
-      return {
+      if (layer.animator) return animateText(layer, layer.animator, base, t, measure);
+      return [{
         ...base,
         kind: 'text',
         text: layer.text,
@@ -33,30 +35,32 @@ function evaluateLayer(layer: Layer, t: Time): DrawCommand {
         fill: layer.fill,
         align: layer.align,
         lineHeight: layer.lineHeight,
-      };
+        blur: 0,
+      }];
     case 'shape': {
       const size = resolveVec2(layer.size, t);
       const width = Math.max(0, size.x);
       const height = Math.max(0, size.y);
       if (layer.shape === 'ellipse') {
-        return { ...base, kind: 'ellipse', width, height, fill: layer.fill, stroke: layer.stroke };
+        return [{ ...base, kind: 'ellipse', width, height, fill: layer.fill, stroke: layer.stroke }];
       }
       const radius = Math.min(Math.max(0, resolveNumber(layer.cornerRadius, t)), width / 2, height / 2);
-      return { ...base, kind: 'rect', width, height, cornerRadius: radius, fill: layer.fill, stroke: layer.stroke };
+      return [{ ...base, kind: 'rect', width, height, cornerRadius: radius, fill: layer.fill, stroke: layer.stroke }];
     }
     case 'image': {
       const size = resolveVec2(layer.size, t);
-      return { ...base, kind: 'image', assetId: layer.assetId, width: Math.max(0, size.x), height: Math.max(0, size.y) };
+      return [{ ...base, kind: 'image', assetId: layer.assetId, width: Math.max(0, size.x), height: Math.max(0, size.y) }];
     }
   }
 }
 
-export function evaluate(project: Project, t: Time): RenderTree {
+// measure is only consulted for text layers with an animator.
+export function evaluate(project: Project, t: Time, measure: MeasureText = approximateMeasure): RenderTree {
   const comp = project.composition;
   const commands: DrawCommand[] = [];
   for (let i = comp.layers.length - 1; i >= 0; i--) {
     const layer = comp.layers[i]!;
-    if (isLayerActive(layer, t)) commands.push(evaluateLayer(layer, t));
+    if (isLayerActive(layer, t)) commands.push(...evaluateLayer(layer, t, measure));
   }
   return { width: comp.width, height: comp.height, background: comp.background, commands };
 }

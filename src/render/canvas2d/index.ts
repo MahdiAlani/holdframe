@@ -33,6 +33,7 @@ function drawText(ctx: Ctx, cmd: TextCommand): void {
   ctx.textAlign = cmd.align;
   ctx.textBaseline = 'alphabetic';
   ctx.fillStyle = cmd.fill;
+  if (cmd.blur > 0) ctx.filter = `blur(${cmd.blur}px)`;
   cmd.text.split('\n').forEach((line, i) => {
     ctx.fillText(line, 0, i * cmd.fontSize * cmd.lineHeight);
   });

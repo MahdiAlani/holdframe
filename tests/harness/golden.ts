@@ -1,7 +1,8 @@
 import { evaluate } from '../../src/eval';
 import { loadProject } from '../../src/model';
-import { createCanvas2DRenderer } from '../../src/render';
-import data from '../fixtures/golden.json';
+import { createCanvas2DRenderer, createCanvasMeasurer } from '../../src/render';
+import animator from '../fixtures/animator.json';
+import golden from '../fixtures/golden.json';
 
 function checker(): HTMLCanvasElement {
   const c = document.createElement('canvas');
@@ -16,13 +17,14 @@ function checker(): HTMLCanvasElement {
   return c;
 }
 
-const project = loadProject(data);
-const t = Number(new URLSearchParams(location.search).get('t') ?? '0');
+const params = new URLSearchParams(location.search);
+const project = loadProject(params.get('fixture') === 'animator' ? animator : golden);
+const t = Number(params.get('t') ?? '0');
 const image = checker();
 const canvas = document.querySelector('canvas')!;
 const renderer = createCanvas2DRenderer(canvas, (id) => (id === 'checker' ? image : null));
 
 document.fonts.ready.then(() => {
-  renderer.render(evaluate(project, t));
+  renderer.render(evaluate(project, t, createCanvasMeasurer()));
   document.body.dataset.ready = '1';
 });

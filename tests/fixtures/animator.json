@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "composition": {
+    "width": 400,
+    "height": 300,
+    "fps": 30,
+    "duration": 2,
+    "background": "#101218",
+    "layers": [
+      {
+        "id": "chars", "name": "Characters", "kind": "text",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 200, "y": 90 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "text": "holdframe", "fontFamily": "Arial, sans-serif", "fontSize": 56, "fontWeight": 700,
+        "fill": "#ffffff", "align": "center", "lineHeight": 1.2,
+        "animator": {
+          "unit": "character", "stagger": 0.08, "order": "forward", "duration": 0.5,
+          "easing": { "kind": "bezier", "x1": 0.34, "y1": 1.56, "x2": 0.64, "y2": 1 },
+          "from": { "position": { "x": 0, "y": 60 }, "opacity": 0, "rotation": -40 }
+        }
+      },
+      {
+        "id": "words", "name": "Words", "kind": "text",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 30, "y": 180 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "text": "word by word\nin reverse", "fontFamily": "Georgia, serif", "fontSize": 32, "fontWeight": 400,
+        "fill": "#ffb347", "align": "left", "lineHeight": 1.3,
+        "animator": {
+          "unit": "word", "stagger": 0.15, "order": "reverse", "duration": 0.6,
+          "easing": { "kind": "linear" },
+          "from": { "scale": { "x": 0, "y": 0 }, "blur": 8 }
+        }
+      },
+      {
+        "id": "lines", "name": "Lines", "kind": "text",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 380, "y": 250 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "text": "line one\nline two", "fontFamily": "Arial, sans-serif", "fontSize": 20, "fontWeight": 400,
+        "fill": "#7fd4ff", "align": "right", "lineHeight": 1.2,
+        "animator": {
+          "unit": "line", "stagger": 0.6, "order": "forward", "duration": 0.4,
+          "easing": { "kind": "linear" },
+          "from": { "position": { "x": 80, "y": 0 }, "opacity": 0 }
+        }
+      }
+    ]
+  }
+}

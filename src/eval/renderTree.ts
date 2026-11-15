@@ -43,6 +43,7 @@ export interface TextCommand extends CommandBase {
   fill: string;
   align: 'left' | 'center' | 'right';
   lineHeight: number;
+  blur: number; // px, 0 = sharp
 }
 
 export type DrawCommand = RectCommand | EllipseCommand | ImageCommand | TextCommand;

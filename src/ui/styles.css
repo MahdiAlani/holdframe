@@ -245,3 +245,10 @@ input, select, textarea {
 .bezier-handle { fill: var(--accent-2); stroke: #1a1200; cursor: grab; }
 .easing-presets { display: flex; flex-wrap: wrap; gap: 4px; }
 .easing-presets button { padding: 2px 7px; font-size: 11px; }
+
+.hint { margin: 0 0 8px; color: var(--muted); }
+.presets { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+.presets button { padding: 3px 8px; }
+.panel-section h4 { margin: 10px 0 6px; font-size: 11px; font-weight: 600; color: var(--muted); }
+.panel-section > .easing { margin-left: 0; margin-top: 8px; }
+.panel-section > button { margin-top: 8px; }

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { getImage, onAssetsChanged } from '../assets/registry';
 import { evaluate } from '../eval';
-import { createCanvas2DRenderer } from '../render';
+import { createCanvas2DRenderer, createCanvasMeasurer } from '../render';
 import { useEditor } from '../store';
 
 export function Viewport() {
@@ -10,9 +10,10 @@ export function Viewport() {
   // Draws straight from the store subscription so a scrub repaints in the same frame.
   useEffect(() => {
     const renderer = createCanvas2DRenderer(ref.current!, getImage);
+    const measure = createCanvasMeasurer();
     const draw = (): void => {
       const { project, time } = useEditor.getState();
-      renderer.render(evaluate(project, time));
+      renderer.render(evaluate(project, time, measure));
     };
     draw();
     const unsubscribe = useEditor.subscribe((s, prev) => {
