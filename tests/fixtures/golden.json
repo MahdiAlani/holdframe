@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "composition": {
+    "width": 400,
+    "height": 300,
+    "fps": 30,
+    "duration": 2,
+    "background": "#1b1f2a",
+    "layers": [
+      {
+        "id": "late", "name": "Late dot", "kind": "shape", "shape": "ellipse",
+        "visible": true, "locked": false, "inPoint": 0.75, "outPoint": 2, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 370, "y": 30 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "size": { "static": { "x": 30, "y": 30 } },
+        "fill": "#ffffff", "stroke": null, "cornerRadius": { "static": 0 }
+      },
+      {
+        "id": "title", "name": "Title", "kind": "text",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "keyframes": [
+            { "t": 0, "value": { "x": 200, "y": 70 }, "easing": { "kind": "linear" } },
+            { "t": 1, "value": { "x": 200, "y": 110 }, "easing": { "kind": "linear" } }
+          ] },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": -6 },
+          "opacity": { "keyframes": [
+            { "t": 0, "value": 0.25, "easing": { "kind": "bezier", "x1": 0.42, "y1": 0, "x2": 0.58, "y2": 1 } },
+            { "t": 1, "value": 1, "easing": { "kind": "linear" } }
+          ] }
+        },
+        "text": "hold\nframe", "fontFamily": "Arial, sans-serif", "fontSize": 48, "fontWeight": 700,
+        "fill": "#ffffff", "align": "center", "lineHeight": 1.1, "animator": null
+      },
+      {
+        "id": "add", "name": "Add square", "kind": "shape", "shape": "rect",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "add",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 110, "y": 230 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "size": { "static": { "x": 60, "y": 60 } },
+        "fill": "#333399", "stroke": null, "cornerRadius": { "static": 0 }
+      },
+      {
+        "id": "overlay", "name": "Overlay square", "kind": "shape", "shape": "rect",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "overlay",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 330, "y": 230 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "size": { "static": { "x": 70, "y": 70 } },
+        "fill": "#00ff88", "stroke": null, "cornerRadius": { "static": 0 }
+      },
+      {
+        "id": "screen", "name": "Screen ellipse", "kind": "shape", "shape": "ellipse",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "screen",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 150, "y": 200 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "keyframes": [
+            { "t": 0, "value": 0, "easing": { "kind": "linear" } },
+            { "t": 1, "value": 90, "easing": { "kind": "linear" } }
+          ] },
+          "opacity": { "static": 1 }
+        },
+        "size": { "static": { "x": 140, "y": 70 } },
+        "fill": "#ff5a5f", "stroke": { "colour": "#ffffff", "width": 3 }, "cornerRadius": { "static": 0 }
+      },
+      {
+        "id": "multiply", "name": "Multiply square", "kind": "shape", "shape": "rect",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "multiply",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 120, "y": 80 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 20 },
+          "opacity": { "static": 1 }
+        },
+        "size": { "static": { "x": 70, "y": 70 } },
+        "fill": "#ffcc00", "stroke": null, "cornerRadius": { "static": 0 }
+      },
+      {
+        "id": "image", "name": "Checker", "kind": "image", "assetId": "checker",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 310, "y": 210 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 15 },
+          "opacity": { "static": 0.8 }
+        },
+        "size": { "static": { "x": 96, "y": 96 } }
+      },
+      {
+        "id": "card", "name": "Card", "kind": "shape", "shape": "rect",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 2, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": -80, "y": -50 } },
+          "position": { "static": { "x": 30, "y": 30 } },
+          "scale": { "keyframes": [
+            { "t": 0, "value": { "x": 0.5, "y": 0.5 }, "easing": { "kind": "linear" } },
+            { "t": 1, "value": { "x": 1.5, "y": 1.2 }, "easing": { "kind": "linear" } }
+          ] },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "size": { "static": { "x": 160, "y": 100 } },
+        "fill": "#2d7ff9", "stroke": { "colour": "#ffffff", "width": 4 },
+        "cornerRadius": { "keyframes": [
+          { "t": 0, "value": 0, "easing": { "kind": "hold" } },
+          { "t": 0.5, "value": 30, "easing": { "kind": "linear" } }
+        ] }
+      }
+    ]
+  }
+}
