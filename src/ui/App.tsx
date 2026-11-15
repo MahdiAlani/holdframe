@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useEditor } from '../store';
 import { deleteLayer } from './actions';
+import { ExportMenu } from './ExportMenu';
 import { LayerList } from './LayerList';
 import { PropertyPanel } from './PropertyPanel';
 import { Timeline } from './Timeline';
@@ -43,7 +44,9 @@ export function App() {
 
   return (
     <div className="app">
-      <Toolbar />
+      <Toolbar>
+        <ExportMenu />
+      </Toolbar>
       <main className="stage">
         <Viewport />
         <PropertyPanel />
