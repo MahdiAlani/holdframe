@@ -186,3 +186,62 @@ input, select, textarea {
   border: 5.5px solid transparent;
   border-top: 8px solid var(--danger);
 }
+
+.empty { padding: 10px; color: var(--muted); }
+
+.file-button {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.file-button:hover { border-color: var(--accent); }
+.file-button input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+.panel {
+  width: 320px;
+  background: var(--panel);
+  border-left: 1px solid var(--line);
+  overflow-y: auto;
+}
+.panel-section { padding: 10px 12px 12px; border-bottom: 1px solid var(--line); }
+.panel-section h3 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.lockable { border: 0; margin: 0; padding: 0; min-width: 0; }
+.lockable:disabled { opacity: 0.5; }
+
+.row, .anim-row { display: flex; align-items: center; gap: 6px; min-height: 28px; }
+.row + .row, .anim + .anim, .row + .anim, .anim + .row { margin-top: 4px; }
+.row-label { flex: none; width: 74px; color: var(--muted); }
+.anim-row .row-label { width: 48px; }
+.row-fields { display: flex; flex: 1; align-items: center; gap: 6px; min-width: 0; flex-wrap: wrap; }
+.field { display: flex; align-items: center; gap: 4px; flex: 1; min-width: 0; }
+.field input[type='number'], .field input[type='text'], .row-fields > input, .row-fields > select, .row-fields > textarea {
+  flex: 1;
+  width: 100%;
+}
+.row-fields > textarea { resize: vertical; }
+.field-label { color: var(--muted); font-size: 11px; }
+.field.check { flex: none; cursor: pointer; }
+.field.colour input[type='color'] { flex: none; width: 28px; height: 24px; padding: 1px; }
+
+.key-nav { display: flex; align-items: center; gap: 4px; margin: 2px 0 0 28px; }
+.key-nav button { padding: 1px 6px; font-size: 11px; }
+.key-count { color: var(--muted); font-size: 11px; margin-left: auto; }
+
+.easing { margin: 6px 0 4px 28px; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.easing-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); }
+.bezier { display: block; width: 180px; height: 180px; margin: 8px auto; touch-action: none; }
+.bezier-box { fill: none; stroke: var(--line); }
+.bezier-arm { stroke: var(--muted); stroke-width: 1; }
+.bezier-curve { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+.bezier-handle { fill: var(--accent-2); stroke: #1a1200; cursor: grab; }
+.easing-presets { display: flex; flex-wrap: wrap; gap: 4px; }
+.easing-presets button { padding: 2px 7px; font-size: 11px; }

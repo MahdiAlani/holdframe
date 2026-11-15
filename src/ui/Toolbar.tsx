@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react';
 import { useEditor } from '../store';
+import { addImageLayer, addLayer } from './actions';
 
-export function Toolbar() {
+export function Toolbar({ children }: { children?: ReactNode }) {
   const playing = useEditor((s) => s.playing);
   const time = useEditor((s) => s.time);
   const fps = useEditor((s) => s.project.composition.fps);
@@ -11,6 +13,30 @@ export function Toolbar() {
   return (
     <header className="toolbar">
       <span className="brand">holdframe</span>
+      <div className="toolbar-group">
+        <button type="button" data-testid="add-text" onClick={() => addLayer('text')}>
+          + Text
+        </button>
+        <button type="button" data-testid="add-rect" onClick={() => addLayer('rect')}>
+          + Rectangle
+        </button>
+        <button type="button" data-testid="add-ellipse" onClick={() => addLayer('ellipse')}>
+          + Ellipse
+        </button>
+        <label className="file-button">
+          + Image
+          <input
+            type="file"
+            accept="image/*"
+            data-testid="add-image"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              e.target.value = '';
+              if (file) void addImageLayer(file);
+            }}
+          />
+        </label>
+      </div>
       <div className="toolbar-group">
         <button
           type="button"
@@ -33,6 +59,8 @@ export function Toolbar() {
           Redo
         </button>
       </div>
+      <div className="toolbar-spacer" />
+      {children}
     </header>
   );
 }

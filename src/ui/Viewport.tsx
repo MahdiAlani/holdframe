@@ -26,7 +26,12 @@ export function Viewport() {
   }, []);
 
   return (
-    <div className="viewport">
+    <div
+      className="viewport"
+      onPointerDown={(e) => {
+        if (e.target === e.currentTarget) useEditor.getState().selectLayer(null);
+      }}
+    >
       <canvas ref={ref} data-testid="viewport-canvas" />
     </div>
   );

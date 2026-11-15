@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useEditor } from '../store';
+import { deleteLayer } from './actions';
 import { LayerList } from './LayerList';
+import { PropertyPanel } from './PropertyPanel';
 import { Timeline } from './Timeline';
 import { Toolbar } from './Toolbar';
 import { Viewport } from './Viewport';
@@ -28,6 +30,11 @@ export function App() {
       } else if (mod && key === 'y') {
         e.preventDefault();
         s.redo();
+      } else if ((e.key === 'Delete' || e.key === 'Backspace') && s.selectedLayerId !== null) {
+        e.preventDefault();
+        deleteLayer(s.selectedLayerId);
+      } else if (e.key === 'Escape') {
+        s.selectLayer(null);
       }
     };
     window.addEventListener('keydown', onKey);
@@ -39,6 +46,7 @@ export function App() {
       <Toolbar />
       <main className="stage">
         <Viewport />
+        <PropertyPanel />
       </main>
       <section className="bottom">
         <LayerList />
