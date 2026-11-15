@@ -255,3 +255,5 @@ input, select, textarea {
 
 .status { color: var(--muted); font-size: 12px; white-space: nowrap; }
 .group-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.status.error { color: var(--danger); max-width: 360px; overflow: hidden; text-overflow: ellipsis; }

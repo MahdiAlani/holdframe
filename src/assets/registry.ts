@@ -1,4 +1,5 @@
 import { newId } from '../model/create';
+import { idbPut } from './db';
 
 interface Asset {
   blob: Blob;
@@ -23,6 +24,7 @@ export function hasAsset(id: string): boolean {
 export async function registerAsset(id: string, blob: Blob): Promise<{ width: number; height: number }> {
   const bitmap = await createImageBitmap(blob);
   assets.set(id, { blob, bitmap });
+  void idbPut('assets', id, blob).catch(() => undefined);
   listeners.forEach((fn) => fn());
   return { width: bitmap.width, height: bitmap.height };
 }
