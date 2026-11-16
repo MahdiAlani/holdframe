@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "composition": {
+    "width": 1080,
+    "height": 1080,
+    "fps": 30,
+    "duration": 4,
+    "background": "#111318",
+    "layers": [
+      {
+        "id": "headline", "name": "Headline", "kind": "text",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 4, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 540, "y": 560 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "keyframes": [
+            { "t": 3.3, "value": 1, "easing": { "kind": "bezier", "x1": 0.42, "y1": 0, "x2": 1, "y2": 1 } },
+            { "t": 3.8, "value": 0, "easing": { "kind": "linear" } }
+          ] }
+        },
+        "text": "holdframe", "fontFamily": "Inter, system-ui, sans-serif", "fontSize": 170, "fontWeight": 800,
+        "fill": "#ffffff", "align": "center", "lineHeight": 1.2,
+        "animator": {
+          "unit": "character", "stagger": 0.05, "order": "forward", "duration": 0.55,
+          "easing": { "kind": "bezier", "x1": 0.34, "y1": 1.56, "x2": 0.64, "y2": 1 },
+          "from": { "position": { "x": 0, "y": 140 }, "rotation": 14, "opacity": 0 }
+        }
+      },
+      {
+        "id": "tagline", "name": "Tagline", "kind": "text",
+        "visible": true, "locked": false, "inPoint": 1.5, "outPoint": 4, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": 0, "y": 0 } },
+          "position": { "static": { "x": 540, "y": 722 } },
+          "scale": { "static": { "x": 1, "y": 1 } },
+          "rotation": { "static": 0 },
+          "opacity": { "keyframes": [
+            { "t": 3.2, "value": 1, "easing": { "kind": "bezier", "x1": 0.42, "y1": 0, "x2": 1, "y2": 1 } },
+            { "t": 3.7, "value": 0, "easing": { "kind": "linear" } }
+          ] }
+        },
+        "text": "motion graphics, in your browser", "fontFamily": "Inter, system-ui, sans-serif", "fontSize": 46, "fontWeight": 500,
+        "fill": "#9aa3b5", "align": "center", "lineHeight": 1.2,
+        "animator": {
+          "unit": "word", "stagger": 0.09, "order": "forward", "duration": 0.5,
+          "easing": { "kind": "bezier", "x1": 0.16, "y1": 1, "x2": 0.3, "y2": 1 },
+          "from": { "position": { "x": 0, "y": 28 }, "opacity": 0 }
+        }
+      },
+      {
+        "id": "wipe", "name": "Wipe", "kind": "shape", "shape": "rect",
+        "visible": true, "locked": false, "inPoint": 0, "outPoint": 4, "blendMode": "normal",
+        "transform": {
+          "anchor": { "static": { "x": -480, "y": 0 } },
+          "position": { "static": { "x": 60, "y": 505 } },
+          "scale": { "keyframes": [
+            { "t": 0.9, "value": { "x": 0, "y": 1 }, "easing": { "kind": "bezier", "x1": 0.16, "y1": 1, "x2": 0.3, "y2": 1 } },
+            { "t": 1.7, "value": { "x": 1, "y": 1 }, "easing": { "kind": "hold" } },
+            { "t": 3.3, "value": { "x": 1, "y": 1 }, "easing": { "kind": "bezier", "x1": 0.7, "y1": 0, "x2": 0.84, "y2": 0 } },
+            { "t": 3.9, "value": { "x": 0, "y": 1 }, "easing": { "kind": "linear" } }
+          ] },
+          "rotation": { "static": 0 },
+          "opacity": { "static": 1 }
+        },
+        "size": { "static": { "x": 960, "y": 236 } },
+        "fill": "#5b8cff", "stroke": null, "cornerRadius": { "static": 30 }
+      }
+    ]
+  },
+  "assets": {}
+}
